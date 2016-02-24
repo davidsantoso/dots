@@ -11,7 +11,7 @@ socket.connect()
 let channel = socket.channel("mouse:click", {})
 
 channel.on("click", payload => {
-  context.fillStyle = "#000000";
+  context.fillStyle = payload.body.color;
   context.beginPath();
   context.arc(payload.body.x, payload.body.y, 50, 0, 2*Math.PI);
   context.fill();
@@ -33,11 +33,6 @@ var context = canvas.getContext("2d");
 
 function draw(e) {
   var pos = getMousePos(canvas, e);
-  context.fillStyle = "#000000";
-  context.beginPath();
-  context.arc(pos.x, pos.y, 50, 0, 2*Math.PI);
-  context.fill();
-
   channel.push("click", {body: pos});
 }
 
