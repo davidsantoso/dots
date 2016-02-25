@@ -10,7 +10,7 @@ defmodule Dots do
       # Start the endpoint when the application starts
       supervisor(Dots.Endpoint, []),
       # Start the Ecto repository
-      supervisor(Dots.Repo, []),
+      worker(Dots.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Dots.Worker, [arg1, arg2, arg3]),
     ]
