@@ -13,7 +13,7 @@ let channel = socket.channel("mouse:click", {})
 channel.on("click", payload => {
   context.fillStyle = payload.body.color;
   context.beginPath();
-  context.arc(payload.body.x, payload.body.y, 50, 0, 2*Math.PI);
+  context.arc(payload.body.x, payload.body.y, Math.floor((Math.random() * 125) + 25), 0, 2*Math.PI);
   context.fill();
 })
 
