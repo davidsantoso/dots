@@ -3,7 +3,8 @@ use Mix.Config
 config :dots, Dots.Endpoint,
   http: [port: 80],
   url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
+  cache_static_manifest: "priv/static/manifest.json",
+  server: true
 
 # Do not print debug messages in production
 config :logger, level: :info
