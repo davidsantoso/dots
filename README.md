@@ -2,16 +2,19 @@
 
 Deploy on FreeBSD
 
-1. `sudo pkg install elixir git vim`
+1. `sudo pkg install elixir git vim node`
 2. `sudo pkg install npm -g`
 3. Fix locale in `.login_conf` with `:lang=en_US.UTF-8:`
 4. `git clone https://github.com/davidsantoso/dots.git`
-5. Copy over the `prod.secret.exs` file
-6. `sudo mix deps.get`
-8. `sudo node node_modules/brunch/bin/brunch build --production`
-9. `sudo env MIX_ENV=prod mix phoenix.digest`
-10. `sudo env MIX_ENV=prod mix compile`
-11. `sudo env PORT=80 env MIX_ENV=prod mix phoenix.server`
+5. `cd dots`
+6. `mix deps.get`
+7. `mix deps.compile exrm`
+8. `npm install`
+9. `sudo node node_modules/brunch/bin/brunch build --production`
+10. `sudo env MIX_ENV=prod mix phoenix.digest`
+11. `sudo env MIX_ENV=prod mix release`
+12. `mkdir /tmp/dots && cp rel/dots/releases/0.0.1/dots.tar.gz /tmp/dots`
+13. `cd /tmp/dots && sudo bin/dots start`
 
 To start your Phoenix app:
 
